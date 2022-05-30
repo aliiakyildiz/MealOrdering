@@ -1,3 +1,5 @@
+using Blazored.Modal;
+using MealOrdering.Client.Utils;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,8 @@ namespace MealOrdering.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddBlazoredModal();
+            builder.Services.AddScoped<ModalManager>();
 
             await builder.Build().RunAsync();
         }
